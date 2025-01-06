@@ -83,15 +83,10 @@ WSGI_APPLICATION = 'conduit.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-# Ensure the directory for the SQLite database exists
-db_dir = os.path.join(BASE_DIR, 'db')
-if not os.path.exists(db_dir):
-    os.makedirs(db_dir)
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(db_dir, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

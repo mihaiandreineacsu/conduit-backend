@@ -23,3 +23,24 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 from .settings import *
+import os
+
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'change_me')
+
+DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
+
+# Ensure the directory for the SQLite database exists.
+# We pack the db into a folder to easily mount a docker volume.
+db_dir = os.path.join(BASE_DIR, 'db')
+if not os.path.exists(db_dir):
+    os.makedirs(db_dir)
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(db_dir, 'db.sqlite3'),
+    }
+}
+
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(',')
+CORS_ORIGIN_WHITELIST = tuple(os.getenv('CORS_ORIGIN_WHITELIST', 'http://localhost:4000,http://127.0.0.1:4000').split(','))
