@@ -25,8 +25,9 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', '2^f+3@v7$v1f8yt0!s)3-1t$)tlp+xm17=*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(',')
+BACKEND_URL = os.getenv("BACKEND_URL", "localhost")
 
+ALLOWED_HOSTS = [BACKEND_URL]
 
 # Application definition
 
@@ -135,7 +136,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-CORS_ORIGIN_WHITELIST = list(os.getenv('CORS_ORIGIN_WHITELIST', '0.0.0.0:8282,localhost:8282').split(','))
+FRONTEND_URL = os.getenv("FRONTEND_URL", "localhost")
+FRONTEND_PORT = os.getenv("FRONTEND_PORT", "8080")
+
+CORS_ORIGIN_WHITELIST = (f"http://{FRONTEND_URL}:{FRONTEND_PORT}")
 
 # Tell Django about the custom `User` model we created. The string
 # `authentication.User` tells Django we are referring to the `User` model in
