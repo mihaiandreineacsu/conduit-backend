@@ -1,6 +1,6 @@
 # ![Django DRF Example App](project-logo.png)
 
-> ### Example Django DRF codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) API spec.
+> ### Example Django DRF codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) API spec
 
 <a href="https://thinkster.io/tutorials/django-json-api" target="_blank"><img width="454" src="https://raw.githubusercontent.com/gothinkster/realworld/master/media/learn-btn-hr.png" /></a>
 
@@ -19,6 +19,6 @@ This repo is functionality complete — PR's and issues welcome!
 
 If all went well then your command line prompt should now start with `(productionready)`.
 
-If your command line prompt does not start with `(productionready)` at this point, try running `pyenv activate productionready` or `cd ../productionready-django-api`. 
+If your command line prompt does not start with `(productionready)` at this point, try running `pyenv activate productionready` or `cd ../productionready-django-api`.
 
 If pyenv is still not working, visit us in the Thinkster Slack channel so we can help you out.
