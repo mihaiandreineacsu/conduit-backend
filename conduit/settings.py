@@ -60,6 +60,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+if DEBUG:
+    MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware')
+
 ROOT_URLCONF = 'conduit.urls'
 
 TEMPLATES = [
@@ -136,10 +139,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+if not DEBUG:
+    STATIC_ROOT = BASE_DIR / "static"
+
 FRONTEND_URL = os.getenv("FRONTEND_URL", "localhost")
 FRONTEND_PORT = os.getenv("FRONTEND_PORT", "8080")
 
-CORS_ORIGIN_WHITELIST = (f"http://{FRONTEND_URL}:{FRONTEND_PORT}")
+CORS_ALLOWED_ORIGINS = [f"http://{FRONTEND_URL}:{FRONTEND_PORT}"]
 
 # Tell Django about the custom `User` model we created. The string
 # `authentication.User` tells Django we are referring to the `User` model in
@@ -157,3 +163,6 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 20,
 }
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
