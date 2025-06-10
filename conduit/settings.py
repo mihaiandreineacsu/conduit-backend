@@ -140,7 +140,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 if not DEBUG:
-    STATIC_ROOT = BASE_DIR / "static"
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 FRONTEND_URL = os.getenv("FRONTEND_URL", "localhost")
 FRONTEND_PORT = os.getenv("FRONTEND_PORT", "8080")
